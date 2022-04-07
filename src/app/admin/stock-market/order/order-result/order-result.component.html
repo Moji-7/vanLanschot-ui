@@ -1,7 +1,7 @@
 
 <!-- <h1>{{symbol}}</h1> -->
 <div [hidden]="ordersToInquiry.length<1">
-  <mat-icon>card_giftcard</mat-icon>
+  <span class="movedown" style="color:rgb(255, 36, 7)"><mat-icon>card_giftcard</mat-icon></span>
  <span class="box centered">you buy:<b>{{ ordersToInquiry.length }}</b> times</span>
 </div>
 
@@ -11,13 +11,16 @@
     <mat-card>
       <mat-card-header>
         <img src="/assets/images/{{order.symbol|lowercase }}.png" class="imgLogo" />
-        {{ order.symbol }}
+       <b> {{ order.symbol }}</b>
       </mat-card-header>
       <mat-card-content>
-        <span><mat-icon>drag_indicator</mat-icon>count: {{ order.count }} </span>
-        <span><mat-icon>drag_indicator</mat-icon>price: {{ order.price }}</span>
+        <span><mat-icon class="movedown">arrow_right</mat-icon></span><span class="label">count:</span> <span class="val">{{ order.count }} </span>
+        <span><mat-icon class="movedown">arrow_right</mat-icon></span><span class="label">price:</span> <span class="val">{{ order.price }}</span>
         <hr/>
-        <span class="centered"><mat-icon>date_range</mat-icon>{{ order.date | date: 'dd/MM/yyyy' }}</span>
+        <span class="centered">
+          <span class="movedown"><mat-icon>date_range</mat-icon></span><span class="val">{{ order.date | date: 'dd/MM/yyyy' }}</span>
+          <span ><mat-icon>attach_money</mat-icon></span><span class="label">amount: </span><span class="val">{{ order.count * order.price}}</span>
+    </span>
       </mat-card-content>
       <mat-card-footer>
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
