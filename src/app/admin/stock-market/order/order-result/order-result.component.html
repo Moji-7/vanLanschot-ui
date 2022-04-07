@@ -10,8 +10,7 @@
   <div *ngFor="let order of ordersToInquiry">
     <mat-card>
       <mat-card-header>
-        <img src="/assets/images/{{order.symbol|lowercase }}.png" class="imgLogo" />
-       <b> {{ order.symbol }}</b>
+        <img src="/assets/images/{{order.symbol|lowercase }}.png" class="imgLogo" [alt]="order.symbol"/>
       </mat-card-header>
       <mat-card-content>
         <span><mat-icon class="movedown">arrow_right</mat-icon></span><span class="label">count:</span> <span class="val">{{ order.count }} </span>
