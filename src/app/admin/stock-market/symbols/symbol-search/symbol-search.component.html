@@ -1,0 +1,26 @@
+
+<form class="example-form">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>  <mat-icon class="mr-6 darkblue ">search</mat-icon>
+stock market symbol</mat-label>
+    <input matInput class="full-width" appearance="fill"
+           aria-label="symbol"
+           [matAutocomplete]="auto"
+           [formControl]="symbolCtrl">
+    <mat-autocomplete #auto="matAutocomplete" [panelWidth]="500" (optionSelected)="onSelectionChanged($event)">
+      <mat-option *ngFor="let symbol of filteredSymbols | async" [value]="symbol.name">
+        <img class="example-option-img" aria-hidden [src]="symbol.icon" height="25">
+        <span>{{symbol.name}}</span>
+        <small class="infotext"> ({{symbol.description}})</small>
+        |
+        <stock-price-info [priceInfo]="symbol.priceInfo"></stock-price-info>
+
+
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br>
+
+
+</form>

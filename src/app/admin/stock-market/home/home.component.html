@@ -1,0 +1,13 @@
+<mat-toolbar color="alert" >
+  <stock-balance style="float: right !important;   flex: 1 1 auto;display: flex; justify-content: flex-end"></stock-balance>
+  <!-- <stock-market-info></stock-market-info> -->
+</mat-toolbar>
+
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let tabItem of tabs" [routerLink]="tabItem.route">
+    <mat-icon class="mr-8">{{ tabItem.icon }}</mat-icon>
+    {{ tabItem.label }}
+  </a>
+</nav>
+
+<router-outlet></router-outlet>

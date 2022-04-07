@@ -1,0 +1,16 @@
+.imgLogo {
+  width: 27px;
+  height: 22px;
+}
+.smallfont {
+  font-size: 12px;
+}
+.centered {
+  text-align: center;
+}
+.box{
+
+  padding: 14px;
+  color: rgb(255, 36, 7);
+  margin-bottom: 7px;
+}

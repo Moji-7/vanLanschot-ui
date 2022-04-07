@@ -1,0 +1,21 @@
+[
+  {
+    "question": {
+      "key": "name",
+      "label": "json name",
+      "type": "input",
+      "required": true,
+      "order": 1
+    }
+  },
+  {
+    "question": {
+      "key": "check",
+      "label": "json agree",
+      "type": "checkbox",
+      "required": true,
+
+      "order": 2
+    }
+  }
+]

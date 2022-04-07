@@ -1,0 +1,20 @@
+
+
+
+<div style="width: 52%; float: left">
+  <div style="width: 100%">
+    <symbol-search></symbol-search>
+  </div>
+  <div style="width: 100%" [hidden]="!symbolSelected.name">
+    <div style="width: 38%; float: left"><symbol-info></symbol-info></div>
+    <div style="width: 46%; float: left"><symbol-chart></symbol-chart></div>
+  </div>
+</div>
+<div style="width: 46%; float: left" [hidden]="!symbolSelected.name">
+  <div style="width: 52%; float: left"><order-set></order-set></div>
+   <div style="width: 44%; float: left"><order-result></order-result></div>
+</div>
+
+
+
+

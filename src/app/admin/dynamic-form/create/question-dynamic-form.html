@@ -1,0 +1,42 @@
+<div [formGroup]="form">
+
+  <div [ngSwitch]="question.controlType">
+    <ng-container *ngSwitchCase="'textbox'">
+      <mat-form-field [style.fontSize.px]=26>
+        <input
+          matInput
+          [placeholder]="question.label"
+          [formControlName]="question.key"
+          type="textbox"
+        />
+      </mat-form-field>
+    </ng-container>
+
+
+    <mat-checkbox
+    *ngSwitchCase="'checkbox'"
+
+      [formControlName]="question.key">{{question.label}}
+  </mat-checkbox>
+
+    <select
+      *ngSwitchCase="'dropdown'"
+      [id]="question.key"
+      [formControlName]="question.key"
+    >
+      <option *ngFor="let opt of question.options" [value]="opt.key">
+        {{opt.value}}
+      </option>
+    </select>
+  </div>
+
+  <!-- <div class="errorMessage" *ngIf="!isValid">
+    {{question.label}} is required
+  </div> -->
+</div>
+
+<!--
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

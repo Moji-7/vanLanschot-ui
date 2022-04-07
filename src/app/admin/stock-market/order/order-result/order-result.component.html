@@ -1,0 +1,27 @@
+
+<!-- <h1>{{symbol}}</h1> -->
+<div [hidden]="ordersToInquiry.length<1">
+  <mat-icon>card_giftcard</mat-icon>
+ <span class="box centered">you buy:<b>{{ ordersToInquiry.length }}</b> times</span>
+</div>
+
+
+<div [@listAnimation]="ordersToInquiry.length">
+  <div *ngFor="let order of ordersToInquiry">
+    <mat-card>
+      <mat-card-header>
+        <img src="/assets/images/{{order.symbol|lowercase }}.png" class="imgLogo" />
+        {{ order.symbol }}
+      </mat-card-header>
+      <mat-card-content>
+        <span><mat-icon>drag_indicator</mat-icon>count: {{ order.count }} </span>
+        <span><mat-icon>drag_indicator</mat-icon>price: {{ order.price }}</span>
+        <hr/>
+        <span class="centered"><mat-icon>date_range</mat-icon>{{ order.date | date: 'dd/MM/yyyy' }}</span>
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

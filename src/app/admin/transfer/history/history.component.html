@@ -1,0 +1,33 @@
+<p>history works!</p>
+
+
+
+<p>account works!</p>
+
+<div *ngIf="accounts$ | async as acclist; else loading">
+  accounts:
+  <div [@listAnimation]="acclist.length">
+    <li *ngFor="let acc of acclist">
+      <span style="background-color: red"> card number:{{ acc.cardNumber }}</span>
+      <span>balance: {{ acc.cardNumber }}</span>
+      <span style="background-color: blue">amount :{{ acc.amount }}</span>
+      <span style="background-color: blue">is sign:{{ acc.isSign }}</span>
+      <span><a [routerLink]="['../account-detail']" [queryParams]="{cardNumber: acc.cardNumber}">Somewhere</a></span>
+
+      <ol>
+
+        <li>
+          <button mat-raised-button (click)="openDialog()">Pick one</button>
+        </li>
+        <li *ngIf="animal">
+          You chose: <i>{{animal}}</i>
+        </li>
+      </ol>
+    </li>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div>loading ....</div>
+</ng-template>
+

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "shetab",
+    "samaneh": [
+      {
+        "name": "s1shetab",
+        "desc": "shetab mirdamad",
+        "site": "mirdamad asli",
+        "servers": [
+          {
+            "name": "s1shetabdb1",
+            "samaneh": "s1shetab"
+          },
+          {
+            "name": "s1shetabdb2",
+            "samaneh": "s1shetab"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "macna",
+    "samaneh": [
+      {
+        "name": "s3macna",
+        "desc": "macna ferdosi",
+        "site": "ferdosi poshtiban",
+        "servers": [
+          {
+            "name": "s3macnadb1",
+            "samaneh": "s3macna"
+          },
+          {
+            "name": "s3macnadb2",
+            "samaneh": "s1shetab"
+          }
+        ]
+      }
+    ]
+  }
+]

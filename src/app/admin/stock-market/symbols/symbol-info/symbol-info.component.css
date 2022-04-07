@@ -1,0 +1,25 @@
+.mdl-grid.center-items {
+  justify-content: center;
+}
+.imgLogo{width: 77px;height: 72px;}
+.smallfont{font-size: 12px;}
+.centered {
+  text-align: center;
+}
+.odd {
+  background-color: rgb(241, 250, 252);
+  padding: 9px 2px;
+}
+.even {
+  background-color: rgb(238, 243, 235);
+  padding: 9px 2px;
+}
+
+.mosbat {
+  color: rgb(23, 216, 23);
+  font-weight: bold;
+}
+.manfi {
+  color: rgb(199, 16, 16);
+  font-weight: bold;
+}

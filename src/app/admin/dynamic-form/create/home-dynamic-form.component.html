@@ -1,0 +1,13 @@
+<!-- <h1>y ali</h1> -->
+<div *ngIf="questionsApi$">
+  <div fxLayout="row">
+    <div fxFlexFill>
+      <app-dynamic-form [questions]="questionsApi$ | async"></app-dynamic-form>
+    </div>
+  </div>
+  <!-- <div *ngFor="let rr of questionsApi$ | async">
+    {{ rr.label }}
+  </div> -->
+</div>
+
+
