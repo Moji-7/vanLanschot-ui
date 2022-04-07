@@ -50,7 +50,7 @@ export class OrderSetComponent implements OnInit {
   private getBalance() {
     this.balanceService.getBalance().subscribe((res) => {
       this.balance = res;
-      this.reactiveForm();
+     // this.reactiveForm();
     });
   }
 
@@ -94,7 +94,7 @@ export class OrderSetComponent implements OnInit {
     return this.orderForm.controls[control].hasError(error);
   };
   submitForm() {
-    //debugger;
+    debugger;
     //generate new request
     let orderModel: OrderRequest = {
       id: null,
@@ -111,7 +111,7 @@ export class OrderSetComponent implements OnInit {
       this._snackBar.openFromComponent(snackBarShowComponent, {
         duration: 3 * 1000,
         data: {
-          html: '<h1>The Header</h1><p>The paragraph of text</p>',
+          html: '<h1>sorry </h1><p>your credit is not enough to buy</p>',
         },
       });
       return false;
@@ -131,6 +131,9 @@ export class OrderSetComponent implements OnInit {
         this.resetForm();
         this.addOrdersResult(orderModel);
         this.updateBalance(this.totalAmount);
+        //todo: must omit below line in operation
+        this.balance.credit=this.balance.credit-this.totalAmount
+
         this._snackBar.openFromComponent(snackBarShowComponent, {
           duration: 3 * 1000,
           data: {
