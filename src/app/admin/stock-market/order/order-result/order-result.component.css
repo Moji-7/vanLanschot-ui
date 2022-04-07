@@ -7,10 +7,18 @@
 }
 .centered {
   text-align: center;
+  font-size: 14;
 }
 .box{
-
   padding: 14px;
   color: rgb(255, 36, 7);
   margin-bottom: 7px;
+}
+.label{color:rgb(1, 44, 1)}
+.val{font-weight: bold;}
+.movedown{
+  color: #388e3c;
+  position: relative;
+  top: 7px;
+  left: 9px;
 }
