@@ -45,7 +45,7 @@ import { OrderResultComponent } from './order/order-result/order-result.componen
 import { OrderSetComponent } from './order/order-set/order-set.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ApiService } from './api-service.service';
-import { DataService } from '../dynamic-form/create/services/data-api.service';
+//import { DataService } from '../dynamic-form/create/services/data-api.service';
 
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -85,7 +85,7 @@ import { NgChartsModule } from 'ng2-charts';
   imports: [
     CommonModule,
     StockMarketRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(DataService),
+    //HttpClientInMemoryWebApiModule.forRoot(DataService),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
