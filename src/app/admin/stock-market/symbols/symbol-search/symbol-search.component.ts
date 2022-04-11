@@ -53,7 +53,6 @@ export class SymbolSearchComponent implements OnDestroy {
     let selectedSymbol = this._filterSymbols(event.option.value)[0]; // : this.symbols.slice()
     //broad cast i selected
     this.sharedService.selectSymbol.next(selectedSymbol);
-
   }
 
   ngOnDestroy(): void {
