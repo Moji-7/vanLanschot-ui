@@ -1,0 +1,14 @@
+.title{
+  font-size: 14px;
+  color: rgb(140 153 151)
+}
+.mosbat{
+  font-size: 32px;
+  color: darkgreen;
+  margin-right: 6px;
+  margin-left: 6px;
+}
+.darkblue{
+  color:  darkgreen;
+}
+.goright{float: right;}

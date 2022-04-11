@@ -1,0 +1,12 @@
+<nav>
+  <a
+  *ngFor="let item of routes"
+  mat-list-item
+  [routerLinkActive]="'active'"
+  [routerLink]="['/', item.path]"
+>
+{{ item.data.icon }}
+  {{ item.data.text }}
+</a>
+</nav>
+<router-outlet></router-outlet>

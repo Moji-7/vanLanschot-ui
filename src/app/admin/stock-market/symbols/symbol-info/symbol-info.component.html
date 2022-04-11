@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <div class="smallfont centered">{{ symbolSelected?.description }}</div>
+      <img src="{{ symbolSelected?.icon }}" class="imgLogo" />
+      {{ symbolSelected?.name }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class=" odd">
+      <mat-icon>drag_indicator</mat-icon>openPrice
+      <b>{{ symbolSelected?.priceInfo?.openPrice }}</b>
+    </div>
+    <div class=" even">
+      <mat-icon>drag_indicator</mat-icon>rangePrice
+      <b>{{ symbolSelected?.priceInfo?.rangePrice?.min }} |
+      {{ symbolSelected?.priceInfo?.rangePrice?.max }}</b>
+    </div>
+    <div class=" odd">
+      <mat-icon>drag_indicator</mat-icon>lastPrice
+      <b>{{ symbolSelected?.priceInfo?.lastPrice?.price }}</b>
+      <span
+        [ngClass]="[
+          symbolSelected?.priceInfo?.currentPrice?.change! > 0
+            ? 'mosbat'
+            : 'manfi'
+        ]"
+      >
+        ({{ symbolSelected?.priceInfo?.lastPrice?.change }})
+      </span>
+    </div>
+    <div class=" even">
+      <mat-icon>drag_indicator</mat-icon>currentPrice
+      <b>
+      {{ symbolSelected?.priceInfo?.currentPrice?.price }}</b>
+      <span
+        [ngClass]="[
+          symbolSelected?.priceInfo?.currentPrice?.change! > 0
+            ? 'mosbat'
+            : 'manfi'
+        ]"
+      >
+        ({{ symbolSelected?.priceInfo?.currentPrice?.change }})
+      </span>
+    </div>
+  </mat-card-content>
+</mat-card>

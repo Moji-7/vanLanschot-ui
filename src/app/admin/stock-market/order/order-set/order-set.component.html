@@ -1,0 +1,47 @@
+
+<!-- <h1>{{symbol}}</h1> -->
+
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>add_shopping_cart</mat-icon>
+          <span class="primary">{{symbolSelected.name}}</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row paddingLeft">
+          <form [formGroup]="orderForm" (ngSubmit)="submitForm()" novalidate>
+            <mat-form-field>
+              <input matInput placeholder="Count" formControlName="count" type="number"
+              min="1" max="2000" required
+              matTooltip="(count*price) must be less than your credit !" />
+              <!-- error -->
+              <mat-error *ngIf="errorHandling('count', 'required') ">
+                <strong>count must between 1 and 2000</strong>
+              </mat-error>
+            </mat-form-field>
+<br/>
+            <mat-form-field>
+              <input matInput placeholder="Price" formControlName="price" type="number"
+               min="1" max="2000" required
+               matTooltip="price must between
+               {{this.symbolSelected?.priceInfo?.rangePrice?.min}} -
+               {{this.symbolSelected?.priceInfo?.rangePrice?.max}}"
+               />
+            </mat-form-field>
+            <!-- Submit -->
+            <div class="button-wrapper">
+              <button mat-raised-button color="primary"  [style.width.px]=166
+              [disabled]="!orderForm.valid">Buy</button>
+
+            </div>
+            <div [hidden]="!loading">
+              <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+            </div>
+
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+

@@ -1,0 +1,44 @@
+[
+  {
+    "dasteh":"shetab",
+    "samaneh": "s1shetab",
+    "server" :"s1shetabdb1",
+    "reporttype":"logs",
+    "count":"9"
+  },
+  {
+    "dasteh":"shetab",
+    "samaneh": "s1shetab",
+    "server" :"s1shetabdb2",
+    "reporttype":"logs",
+    "count":"9"
+  },
+  {  "dasteh":"shetab",
+    "samaneh": "s1shetab",
+    "server" :"s1shetabdb2",
+    "reporttype":"dbspace",
+    "count":"27"
+  },
+  {
+    "dasteh":"shetab",
+    "samaneh": "s1shetab",
+    "server" :"s1shetabdb1",
+    "reporttype":"cdcstatus",
+    "count":"2"
+  },
+  {
+    "dasteh":"shetab",
+    "samaneh": "s1shetab",
+    "server" :"s1shetabdb1",
+    "reporttype":"cdclogs",
+    "count":"17"
+  },
+  {  "dasteh":"shetab",
+    "samaneh": "s1shetab",
+    "server" :"s1shetabdb1",
+    "reporttype":"fragments",
+    "count":"0"
+  }
+]
+
+
