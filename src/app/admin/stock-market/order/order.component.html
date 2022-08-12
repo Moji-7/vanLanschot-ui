@@ -1,20 +1,27 @@
 
 
 
-<div style="width: 52%; float: left">
-  <div style="width: 100%">
-    <symbol-search></symbol-search>
-  </div>
-  <div style="width: 100%" [hidden]="!symbolSelected.name">
-    <div style="width: 38%; float: left"><symbol-info></symbol-info></div>
-    <div style="width: 46%; float: left"><symbol-chart></symbol-chart></div>
-  </div>
+<mat-grid-list cols="4" rowHeight="4:1">
+  <mat-grid-tile colspan="4" rowspan="1">
+    <div class="lefted">
+ <symbol-search></symbol-search>
+ </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2" rowspan="4">
+    <symbol-info></symbol-info>
+    <symbol-chart></symbol-chart>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="4">
+    <div class="lefted">
+   <order-set></order-set>
+    <order-result></order-result>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+
 </div>
-<div style="width: 46%; float: left" [hidden]="!symbolSelected.name">
-  <div style="width: 52%; float: left"><order-set></order-set></div>
-   <div style="width: 44%; float: left"><order-result></order-result></div>
-</div>
-
-
-
-

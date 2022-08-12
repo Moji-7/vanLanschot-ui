@@ -1,20 +1,21 @@
 import { StockSymbol } from '../symbols/symbol.model';
 
-export interface OrderRequest {
-  id:number|null;
+export interface Order {
+  request: Request;
+  responses: OrderResponse[];
+}
+
+export interface Request {
+  id: number | null;
   symbol: string;
   count: number;
   price: number;
   date: Date;
+  traceId: number;
 }
-
 export interface OrderResponse {
-  request: OrderRequest;
-  respone: OrderCoreResponse;
-}
-
- interface OrderCoreResponse {
   date: Date;
-  traceId:number;
+  traceId: number;
+  id: number;
   statuscode: number;
 }

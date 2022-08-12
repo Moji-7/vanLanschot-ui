@@ -1,23 +1,53 @@
-
 <!-- <h1>{{symbol}}</h1> -->
-<div [hidden]="ordersToInquiry.length<1">
-  <mat-icon>card_giftcard</mat-icon>
- <span class="box centered">you buy:<b>{{ ordersToInquiry.length }}</b> times</span>
+<div [hidden]="ordersToInquiry.length < 1">
+  <span class="movedown" style="color: rgb(255, 36, 7)"
+    ><mat-icon>card_giftcard</mat-icon></span
+  >
+  <span class="boxi"
+    >you buy:<b>{{ ordersToInquiry.length }}</b> times</span>
 </div>
-
 
 <div [@listAnimation]="ordersToInquiry.length">
   <div *ngFor="let order of ordersToInquiry">
     <mat-card>
       <mat-card-header>
-        <img src="/assets/images/{{order.symbol|lowercase }}.png" class="imgLogo" />
-        {{ order.symbol }}
+        <img
+          src="/assets/images/{{ order.request.symbol | lowercase }}.png"
+          class="imgLogo"
+          [alt]="order.request.symbol"
+        />
       </mat-card-header>
       <mat-card-content>
-        <span><mat-icon>drag_indicator</mat-icon>count: {{ order.count }} </span>
-        <span><mat-icon>drag_indicator</mat-icon>price: {{ order.price }}</span>
-        <hr/>
-        <span class="centered"><mat-icon>date_range</mat-icon>{{ order.date | date: 'dd/MM/yyyy' }}</span>
+        <span><mat-icon class="movedown">arrow_right</mat-icon></span
+        ><span class="label">count:</span>
+        <span class="val">{{ order.request.count }} </span>
+        <span><mat-icon class="movedown">arrow_right</mat-icon></span
+        ><span class="label">price:</span>
+        <span class="val">{{ order.request.price }}</span>
+        <hr />
+        <span class="centered">
+          <span><mat-icon>date_range</mat-icon></span
+          ><span class="val">{{
+            order.request.date | date: "dd/MM/yyyy"
+          }}</span>
+          <span class="movedown"><mat-icon>attach_money</mat-icon></span
+          ><span class="label">amount: </span
+          ><span class="val">
+            {{ order.request.count * order.request.price }}
+          </span>
+          <hr />
+          <div>
+            status
+            <span *ngFor="let orderResponse of order.responses">
+              <span><mat-icon class="movedown">arrow_right</mat-icon></span>
+              <span [class]="setClass(orderResponse)">{{orderResponse.date | date:'hh:mm:ss a'}}</span>
+            </span>
+            <!-- <span class="laststate">last response:(date)
+              {{ order.responses.slice(-1)[0].statuscode }}
+
+            </span> -->
+          </div>
+        </span>
       </mat-card-content>
       <mat-card-footer>
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>

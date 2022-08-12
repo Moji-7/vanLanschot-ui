@@ -18,7 +18,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [AuthGuard],
+   // canActivate: [AuthGuard],
   },
   // {
   //   path: 'form-hero-template',

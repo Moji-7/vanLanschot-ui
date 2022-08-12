@@ -1,27 +1,43 @@
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, delay, Observable, Subject, tap, throwError } from 'rxjs';
-import { OrderRequest, OrderResponse } from './order.model';
+import { Order, OrderResponse } from './order.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class  OrderService{
-  orderResponseCaller!: Subject<OrderRequest>;
-  //orderSubmited!: OrderResponse;
-
+export class OrderService {
+  orderResponseCaller!: Subject<Order>;
   constructor(private http: HttpClient) {
-  this.orderResponseCaller = new Subject<OrderRequest>();
-  // this.orderSubmited  = {} as OrderResponse;
-
+    this.orderResponseCaller = new Subject<Order>();
   }
+  public traceIdGenerator(){
+    return Math.floor(100000 + Math.random() * 900000);
+  }
+
   apiUrl = '/api';
-  orderRegister(orderRequest:OrderRequest): Observable<OrderResponse> {
+
+
+  orderPre(orderResponse: OrderResponse): Observable<OrderResponse> {
     debugger;
-    orderRequest.id = null;
+    return this.http
+      .post<OrderResponse>(this.apiUrl + '/orderInquiry/', {orderResponse})
+      .pipe(
+        delay(1000),
+        tap((res) => console.log('submit pre order request', res)),
+        catchError(this.handleError)
+      );
+  }
+
+  orderRegister(orderRequest: Order): Observable<Order> {
+    debugger;
     //const options = name ? { params: new HttpParams().set('name', name) } : {};
     return this.http
-      .post<OrderResponse>(this.apiUrl + '/orderRequest', orderRequest)
+      .post<Order>(this.apiUrl + '/orderRequest', orderRequest)
       .pipe(
         delay(200),
         tap((res) => console.log('try register new order', res)),
@@ -29,17 +45,17 @@ export class  OrderService{
       );
   }
 
-
-
-  orderInquiry(orderResponse:OrderResponse): Observable<OrderResponse> {
+  orderInquiry(orderResponse: Order): Observable<OrderResponse> {
     debugger;
-    let traceNumber=orderResponse.respone.traceId
-    const options = traceNumber ? { params: new HttpParams().set('tracenumber', traceNumber) } : {};
+    const options = {
+      params: new HttpParams().set('id', orderResponse.request.traceId),
+    };
+
     return this.http
-      .get<OrderResponse>(this.apiUrl + '/orderInquiry', options)
+      .get<OrderResponse>(this.apiUrl + '/orderInquiry/', options)
       .pipe(
-        delay(2000),
-        tap((res) => console.log('api cal inquiry for new order', res)),
+        delay(1000),
+        tap((res) => console.log('call inquiry for order & result is', res)),
         catchError(this.handleError)
       );
   }

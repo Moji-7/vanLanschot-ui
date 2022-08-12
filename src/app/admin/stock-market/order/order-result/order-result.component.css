@@ -1,16 +1,44 @@
 .imgLogo {
-  width: 27px;
-  height: 22px;
+  width: 76px;
+  height: 66px;
 }
 .smallfont {
   font-size: 12px;
 }
 .centered {
   text-align: center;
+  font-size: 14;
 }
-.box{
-
+.box {
   padding: 14px;
   color: rgb(255, 36, 7);
   margin-bottom: 7px;
+}
+.label {
+  color: rgb(1, 44, 1);
+}
+.val {
+  font-weight: bold;
+}
+.movedown {
+  color: #388e3c;
+  position: relative;
+  top: 7px;
+  left: 9px;
+}
+
+.order-send {
+  background-color: blueviolet;
+}
+.order-inQueue {
+  background-color: yellow;
+}
+.order-success {
+  background-color: green;
+}
+.order-fail {
+  background-color: red;
+}
+.order-unknown {
+  background-color: rgb(236, 233, 233);
 }

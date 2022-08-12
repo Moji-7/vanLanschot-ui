@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { pipe, tap } from 'rxjs';
+import { delay, pipe, tap } from 'rxjs';
 import { StockSymbol } from '../../symbols/symbol.model';
-import { OrderRequest, OrderResponse } from '../order.model';
+
 import { OrderService } from '../order.service';
 import {
   trigger,
@@ -13,6 +13,7 @@ import {
   stagger,
   // ...
 } from '@angular/animations';
+import { Order, OrderResponse } from '../order.model';
 @Component({
   selector: 'order-result',
   templateUrl: './order-result.component.html',
@@ -55,7 +56,7 @@ import {
   ],
 })
 export class OrderResultComponent implements OnInit {
-  ordersToInquiry: OrderRequest[] = [] as OrderRequest[];
+  ordersToInquiry: Order[] = [] as Order[];
   orderResponse = {} as OrderResponse;
   constructor(private orderService: OrderService) {}
 
@@ -63,18 +64,47 @@ export class OrderResultComponent implements OnInit {
     //add  to result component (requests who send to core successfully)
     this.orderService.orderResponseCaller
       .pipe()
-      .subscribe((response: OrderRequest) => {
+      .subscribe((response: Order) => {
         debugger;
         this.ordersToInquiry.push(response);
+        tap(delay(1000));
+        //now must inquiry result
+        //!
+        //todo must comment below line just for test
+        this.ordersInquiry(response);
       });
   }
 
   // this.ordersToInquiry.call(ordersInquiry).pop
 
-  private ordersInquiry(orderResponse: OrderResponse) {
+  setClass = (response: OrderResponse) => {
+    switch (response.statuscode) {
+      case 0:
+        return 'order-send';
+        break;
+      case 110:
+        return 'order-inQueue';
+        break;
+      case 220:
+        return 'order-success';
+        break;
+      case 230:
+        return 'order-fail';
+        break;
+      default:
+        return 'order-unknown';
+    }
+  };
+
+  public ordersInquiry(order: Order) {
     this.orderService
-      .orderInquiry(orderResponse)
+      .orderInquiry(order)
       .pipe(tap((res) => console.log('inquiry result  of  order :', res)))
-      .subscribe((res) => (this.orderResponse = res));
+      .subscribe((res:any) => {
+        this.orderResponse = res[0].orderResponse;
+        this.ordersToInquiry
+          .find((x) => x.request.traceId == order.request.traceId)
+          ?.responses.push(this.orderResponse);
+      });
   }
 }
